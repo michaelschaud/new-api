@@ -59,9 +59,13 @@ func main() {
 	// Register all routes
 	router.SetRouter(server)
 
+	// Default to port 3000 for local dev; override with PORT env var or --port flag
 	var port = os.Getenv("PORT")
 	if port == "" {
 		port = strconv.Itoa(*common.Port)
+		if port == "0" {
+			port = "3000"
+		}
 	}
 
 	common.SysLog(fmt.Sprintf("Server is running on port %s", port))

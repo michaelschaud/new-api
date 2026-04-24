@@ -69,7 +69,8 @@ func main() {
 		}
 	}
 
-	common.SysLog(fmt.Sprintf("Server is running on port %s", port))
+	// Log the full address so it's easy to click from terminal output
+	common.SysLog(fmt.Sprintf("Server is running on http://localhost:%s", port))
 
 	if err := server.Run(":" + port); err != nil {
 		common.FatalLog("Failed to start server: " + err.Error())

@@ -60,11 +60,12 @@ func main() {
 	router.SetRouter(server)
 
 	// Default to port 3000 for local dev; override with PORT env var or --port flag
+	// Personal note: I prefer 8080 locally to avoid conflicts with other services on 3000
 	var port = os.Getenv("PORT")
 	if port == "" {
 		port = strconv.Itoa(*common.Port)
 		if port == "0" {
-			port = "3000"
+			port = "8080"
 		}
 	}
 

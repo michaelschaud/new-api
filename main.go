@@ -80,6 +80,10 @@ func main() {
 	fmt.Println(">>> Tip: set DEBUG=true to enable verbose logging")
 	// Personal note: set GIN_MODE=debug to see full request/response details during development
 	fmt.Println(">>> Tip: set GIN_MODE=debug to enable Gin debug output (route list, etc.)")
+	// Personal note: GOMEMLIMIT is useful to cap memory usage on my small VPS (e.g. GOMEMLIMIT=512MiB)
+	if os.Getenv("GOMEMLIMIT") != "" {
+		fmt.Printf(">>> GOMEMLIMIT is set to %s\n", os.Getenv("GOMEMLIMIT"))
+	}
 
 	if err := server.Run(":" + port); err != nil {
 		common.FatalLog("Failed to start server: " + err.Error())

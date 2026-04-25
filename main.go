@@ -78,6 +78,8 @@ func main() {
 	fmt.Println(">>> Default admin login: admin / 123456 (change this immediately!)")
 	// Personal note: handy reminder to check logs at /var/log/new-api/ if something goes wrong
 	fmt.Println(">>> Tip: set DEBUG=true to enable verbose logging")
+	// Personal note: set GIN_MODE=debug to see full request/response details during development
+	fmt.Println(">>> Tip: set GIN_MODE=debug to enable Gin debug output (route list, etc.)")
 
 	if err := server.Run(":" + port); err != nil {
 		common.FatalLog("Failed to start server: " + err.Error())

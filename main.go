@@ -76,6 +76,8 @@ func main() {
 	fmt.Printf(">>> Listening on http://localhost:%s\n", port)
 	// Print a reminder about the default credentials on first run
 	fmt.Println(">>> Default admin login: admin / 123456 (change this immediately!)")
+	// Personal note: handy reminder to check logs at /var/log/new-api/ if something goes wrong
+	fmt.Println(">>> Tip: set DEBUG=true to enable verbose logging")
 
 	if err := server.Run(":" + port); err != nil {
 		common.FatalLog("Failed to start server: " + err.Error())

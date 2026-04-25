@@ -74,6 +74,8 @@ func main() {
 	common.SysLog(fmt.Sprintf("Server is running on http://localhost:%s", port))
 	// Also print directly to stdout so the URL is visible even if logger is misconfigured
 	fmt.Printf(">>> Listening on http://localhost:%s\n", port)
+	// Print a reminder about the default credentials on first run
+	fmt.Println(">>> Default admin login: admin / 123456 (change this immediately!)")
 
 	if err := server.Run(":" + port); err != nil {
 		common.FatalLog("Failed to start server: " + err.Error())

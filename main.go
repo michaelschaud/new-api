@@ -84,8 +84,14 @@ func main() {
 	if os.Getenv("GOMEMLIMIT") != "" {
 		fmt.Printf(">>> GOMEMLIMIT is set to %s\n", os.Getenv("GOMEMLIMIT"))
 	}
+	// Personal note: print the bind address so it's obvious if I accidentally bind to 0.0.0.0 vs 127.0.0.1
+	bindAddr := os.Getenv("BIND_ADDR")
+	if bindAddr == "" {
+		bindAddr = "0.0.0.0"
+	}
+	fmt.Printf(">>> Binding to %s:%s\n", bindAddr, port)
 
-	if err := server.Run(":" + port); err != nil {
+	if err := server.Run(bindAddr + ":" + port); err != nil {
 		common.FatalLog("Failed to start server: " + err.Error())
 	}
 }
